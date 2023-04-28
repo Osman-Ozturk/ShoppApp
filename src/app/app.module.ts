@@ -3,34 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductComponent } from './product-list/product/product.component';
-import { CategoryListComponent } from './category-list/category-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductCreateComponent } from './product-create/product-create.component';
-import { CategoryCreateComponent } from './category-create/category-create.component';
 import { FormsModule } from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
+import { ProductsModule } from './products/products.module';
+import { CkeditorModule } from './ckeditor.module';
+import { CategoriesModule } from './categories/categories.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductListComponent,
-    ProductComponent,
-    CategoryListComponent,
     HomeComponent,
-    ProductCreateComponent,
-    CategoryCreateComponent,
-    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    CkeditorModule,
+    ProductsModule,
+    CategoriesModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

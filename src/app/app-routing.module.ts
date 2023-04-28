@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { CategoryCreateComponent } from './category-create/category-create.component';
+import { AuthComponent } from './authentication/auth/auth.component';
+import { CategoryCreateComponent } from './categories/category-create/category-create.component';
 import { HomeComponent } from './home/home.component';
-import { ProductCreateComponent } from './product-create/product-create.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductComponent } from './product-list/product/product.component';
-import { AdminGuard } from './guards/admin-guard';
+import { ProductCreateComponent } from './products/product-create/product-create.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductComponent } from './products/product/product.component';
+import { AdminGuard } from './authentication/guards/admin-guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
