@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, map, tap, delay, take, exhaustMap } from 'rxjs';
 import { Product } from './product.model';
 import { AuthService } from '../authentication/auth.service';
+import { environment } from 'src/environments/environment';
 
 // local service
 @Injectable()
 export class ProductService {
-  private url =
-    'https://ng-shopapp-d3e0f-default-rtdb.europe-west1.firebasedatabase.app/';
+  private url = environment.datebase_url;
 
   constructor(private http: HttpClient,private authService:AuthService) {}
 

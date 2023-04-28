@@ -3,15 +3,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { AuthResponse } from './auth.model';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  api_key = "AIzaSyAIepfCBeNu9CfaeGQRfpZEqJGv_fuz1zQ";
   user = new BehaviorSubject<User | null>(null);
-
+  api_key=environment.api_key
   constructor(private http: HttpClient) { }
 
   register(email: string, password: string) {

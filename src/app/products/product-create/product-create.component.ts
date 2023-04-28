@@ -39,12 +39,12 @@ export class ProductCreateComponent implements OnInit {
     const extension = this.model.imageUrl.split(".").pop();
 
     if(extensions.indexOf(extension) == -1) {
-      this.error ="resim uzantısı sadece jpeg, jpg, png olmalıdır.";
+      this.error ="Die Erweiterung von Image ist jpeg, jpg oder png.";
       return;
     }
 
     if(this.model.categoryId == "0") {
-      this.error ="kategori seçmelisiniz.";
+      this.error ="Sie sollen eine Kategorie auswählen.";
       return;
     }
 
@@ -63,7 +63,7 @@ export class ProductCreateComponent implements OnInit {
         this.router.navigate(['/products']);
       });
     } else {
-      this.error ="formu kontrol ediniz.";
+      this.error ="Sie sollen Form korrekt ausfüllen.";
     }
 
     console.log(this.model);
