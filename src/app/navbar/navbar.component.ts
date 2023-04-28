@@ -9,12 +9,14 @@ import { AuthService } from '../services/auth.service';
 export class NavbarComponent implements OnInit {
 
   isAuthenticated: boolean =false;
+  isAdmin: boolean =false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
-      this.isAuthenticated = (localStorage.getItem("user")) ? true:false; 
+      this.isAuthenticated = !!user;
+      this.isAdmin = user?.email === "osman@gmail.com"
       
     })
   }
