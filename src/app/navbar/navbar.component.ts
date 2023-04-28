@@ -8,14 +8,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  isAuthenticated: boolean = false;
+  isAuthenticated: boolean =false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
-      this.isAuthenticated = !!user; 
+      this.isAuthenticated = (localStorage.getItem("user")) ? true:false; 
+      
     })
+  }
+  logoutHandler() {
+    this.authService.logout()
+     this.isAuthenticated =false
   }
 
 }

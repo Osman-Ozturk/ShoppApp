@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Subject, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { AuthResponse } from '../models/auth-response';
 import { User } from '../models/user';
 
@@ -9,8 +9,8 @@ import { User } from '../models/user';
 })
 export class AuthService {
 
-  api_key = "AIzaSyDyFVtGZ7hvlhLIO4p8GkleoHU51EFV5EA";
-  user = new Subject<User>();
+  api_key = "AIzaSyAIepfCBeNu9CfaeGQRfpZEqJGv_fuz1zQ";
+  user = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -40,7 +40,21 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  logout(){
+    this.user.next(null);
+    localStorage.removeItem("user")
+  }
 
+  autoLogin(){
+    if (localStorage.getItem("user") == null) {
+      return;
+    }
+    const user = JSON.parse(localStorage.getItem("user") || "{}" )
+    const loadedUser = new User(user.email,user.id,user._token,new Date(user._tokenExpirationDate))
+    if (loadedUser.token) {
+      this.user.next(loadedUser)
+    }
+  }
   private handleError(err: HttpErrorResponse) {
     let message = "hata oluştu";
 
@@ -74,9 +88,7 @@ export class AuthService {
       idToken,
       expirationDate
     );
-
-    console.log(user);
-
     this.user.next(user);
+    localStorage.setItem("user",JSON.stringify(user))
   }
 }

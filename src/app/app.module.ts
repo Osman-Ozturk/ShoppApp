@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { FormsModule } from '@angular/forms';
-import { CKEditorModule } from 'ckeditor4-angular';
 import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { AuthComponent } from './auth/auth.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

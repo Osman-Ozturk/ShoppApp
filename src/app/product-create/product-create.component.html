@@ -7,14 +7,14 @@
         <label for="name" class="form-label">Name</label>
         <input required minlength="5" [(ngModel)]="model.name" #name="ngModel" type="text" name="name" id="name" class="form-control">
         <div class="text-danger mt-1" *ngIf="name.invalid && name.touched">
-            Ürün ismi en az 5 karakter olmalıdır.
+            Der Produktname muss mindestens 5 Zeichen lang sein.
         </div>
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">price</label>
         <input [(ngModel)]="model.price" type="number" required min="0" max="100000" name="price" #price="ngModel" id="price" class="form-control">
         <div class="text-danger mt-1" *ngIf="price.invalid && price.touched">
-            Ürün fiyatı için negatif değer girmeyiniz.
+            Geben Sie keinen negativen Wert für den Produktpreis ein.
         </div>
     </div>
     <div class="mb-3">
@@ -23,7 +23,7 @@
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">description</label>
-        <ckeditor [(ngModel)]="model.description" name="description" id="description"></ckeditor>
+        <textarea [(ngModel)]="model.description" name="description" id="description"></textarea>
     </div>
     <div class="form-check mb-3">
         <input [(ngModel)]="model.isActive" class="form-check-input" type="checkbox" name="isActive" id="isActive">
