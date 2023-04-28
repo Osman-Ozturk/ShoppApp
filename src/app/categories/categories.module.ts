@@ -4,6 +4,8 @@ import { CategoryCreateComponent } from "./category-create/category-create.compo
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { AdminGuard } from "../authentication/guards/admin.guard";
+import { AuthenticationModule } from "../authentication/authentication.module";
 
 @NgModule({
     declarations: [
@@ -13,7 +15,12 @@ import { FormsModule } from "@angular/forms";
     imports: [
         CommonModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        AuthenticationModule,
+        RouterModule.forChild([
+            { path: 'categories/create', component: CategoryCreateComponent,canActivate: [AdminGuard] },
+            { path: 'categories', component: CategoryListComponent },
+            ])
     ],
     exports: [
         CategoryListComponent,

@@ -6,6 +6,8 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { CkeditorModule } from "../ckeditor.module";
+import { AdminGuard } from "../authentication/guards/admin.guard";
+import { AuthenticationModule } from "../authentication/authentication.module";
 
 @NgModule({
     declarations: [
@@ -17,7 +19,14 @@ import { CkeditorModule } from "../ckeditor.module";
         RouterModule, 
         CommonModule,
         FormsModule,
-        CkeditorModule
+        CkeditorModule,
+        AuthenticationModule,
+        RouterModule.forChild([
+            { path: 'products/create', component: ProductCreateComponent ,canActivate: [AdminGuard]},
+            { path: 'products', component: ProductListComponent },
+            { path: 'products/:productId', component: ProductComponent },
+            { path: 'products/category/:categoryId', component: ProductListComponent},
+            ])
     ],
     exports: [
         ProductListComponent,
